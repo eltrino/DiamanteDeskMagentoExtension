@@ -1,0 +1,84 @@
+<?php
+/**
+ * Copyright (c) 2014 Eltrino LLC (http://eltrino.com)
+ *
+ * Licensed under the Open Software License (OSL 3.0).
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eltrino.com so we can send you a copy immediately.
+ */
+?>
+<?php /** @var $this Eltrino_DiamanteDesk_Block_Adminhtml_System_Config_Form_Button */ ?>
+<script type="text/javascript">
+    //<![CDATA[
+    function diamanteDeskCheckConnection() {
+        new Ajax.Request(<?php echo json_encode($this->getCheckConnectionUrl())?>, {
+            parameters: {
+                isAjax: 'true',
+                form_key: FORM_KEY,
+                server_address: $('diamantedesk_api_server_address').value,
+                user_name: $('diamantedesk_api_username').value,
+                api_key: $('diamantedesk_api_key').value
+            },
+            onSuccess: function (transport) {
+                var indicator = $$(".diamante-desk-api-indicator").last();
+                var indicatorMessage = $$(".diamante-desk-api-indicator-message").last();
+                var messageType = $("diamantdesk-message-type");
+                messageType.removeClassName("success-msg").removeClassName("error-msg");
+                indicator.setStyle({display: 'block'});
+
+                try {
+                    var response = JSON.parse(transport.responseText);
+                }
+                catch (e) {
+                    var response = 0;
+                }
+
+                if (response !== 0) {
+
+                    var select = $('diamantedesk_branch_configuration_branch');
+
+                    var preselectedValue = select.getValue();
+
+                    select.descendants().each(Element.remove);
+
+                    select.insert(new Element('option', {value: 0}).update('All'));
+
+                    response.each(
+                        function (item) {
+                            select.insert(new Element('option', {value: item.id}).update(item.name));
+                        }
+                    );
+
+                    select.value = preselectedValue;
+
+                    messageType.addClassName("success-msg");
+                    indicatorMessage.innerHTML = <?php echo json_encode($this->__('Successfully.'))?>;
+                    $$(".hidden_row").first().setStyle({display: 'block'});
+                } else {
+                    messageType.addClassName("error-msg");
+                    indicatorMessage.innerHTML = <?php echo json_encode($this->__('Fail. Please check your credentials and try again.'))?>;
+                    $$(".hidden_row").first().setStyle({display: 'none'});
+                }
+            }
+        });
+    }
+    //]]>
+</script>
+<?php echo $this->getButtonHtml() ?>
+<div class="diamante-desk-api-indicator">
+    <div id="messages">
+        <ul class="messages">
+            <li id="diamantdesk-message-type">
+                <ul>
+                    <li><span class="diamante-desk-api-indicator-message"></span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

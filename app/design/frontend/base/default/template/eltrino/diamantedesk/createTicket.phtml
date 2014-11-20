@@ -1,0 +1,131 @@
+<?php
+/**
+ * Copyright (c) 2014 Eltrino LLC (http://eltrino.com)
+ *
+ * Licensed under the Open Software License (OSL 3.0).
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eltrino.com so we can send you a copy immediately.
+ */
+?>
+<?php /* @var $this Eltrino_DiamanteDesk_Block_Form */ ?>
+<?php $customer = Mage::getSingleton('customer/session')->getCustomer() ?>
+<?php if ($this->showTitle): ?>
+    <div class="page-title">
+        <h1><?php echo $this->__('Create Ticket') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php endif; ?>
+
+<form enctype="multipart/form-data" action="<?php echo $this->getSaveUrl() ?>" method="POST" id="diamante-ticket-create"
+      class="scaffold-form diamante-desk-form">
+    <?php echo $this->getBlockHtml('formkey') ?>
+
+    <div class="field">
+        <label for="subject" class="required"><em>*</em><?php echo $this->__('Subject') ?></label>
+
+        <div class="input-box">
+            <input type="text" name="subject" id="subject" title="<?php echo $this->__('Subject') ?>"
+                   class="input-text required-entry"/>
+        </div>
+    </div>
+
+    <?php if ($branches = $this->getBranches()): ?>
+        <div class="field">
+            <label for="branch" class="required"><em>*</em><?php echo $this->__('Branch') ?></label>
+
+            <div class="input-box">
+                <select name="branch" id="branch" class="required">
+                    <?php foreach ($branches as $branch): ?>
+                        <option value="<?php echo $branch->id ?>"><?php echo $branch->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->getOrderCollection()): ?>
+        <?php if (!$this->getOrderIncrementId()): ?>
+            <div class="field">
+                <label for="order_id"><?php echo $this->__('Order Id') ?></label>
+
+                <div class="input-box">
+                    <select name="order_id" id="order_id"
+                            title="<?php echo $this->__('Order Id') ?>">
+                        <?php /** @var $order Mage_Sales_Model_Order */ ?>
+                        <option value=""></option>
+                        <?php foreach ($this->getOrderCollection() as $order): ?>
+                            <option value="<?php echo $order->getIncrementId() ?>">
+                                <?php echo $order->getIncrementId() ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        <?php else: ?>
+            <input type="hidden" name="order_id" id="order_id" value="<?php echo $this->getOrderIncrementId(); ?>">
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <label for="description" class="required"><em>*</em><?php echo $this->__('Description') ?></label>
+
+    <div class="input-box">
+        <textarea name="description" id="description" title="<?php echo $this->__('Description') ?>"
+                  class="required-entry input-text" cols="5" rows="3"></textarea>
+    </div>
+
+
+    <label for="attachment"><?php echo $this->__('Attachment:') ?></label>
+
+    <div class="input-box">
+        <input type="file" name="attachment" id="attachment" title="<?php echo $this->__('Attachment') ?>"
+               class="input-file"/>
+    </div>
+
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+
+    <div class="buttons-set">
+        <?php if ($this->showBackLink): ?>
+            <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>">
+                    <small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <?php endif; ?>
+        <button type="submit" title="<?php echo $this->__('Send ticket') ?>" class="button" style="margin-bottom: 15px;">
+            <span><span><?php echo $this->__('Send ticket') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript" src="<?php echo $this->getJsUrl() ?>tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('diamante-ticket-create', true);
+    var form = $('diamante-ticket-create');
+    document.observe('dom:loaded', function(){
+        $$(".diamante-desk-form :input").each(function (el) {
+            el.blur();
+        });
+    });
+    //]]>
+    window.onload=function()
+    {
+        tinyMCE.init({
+            mode : "exact",
+            elements: "description",
+            theme : "advanced",
+            plugins : "inlinepopups,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras",
+            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,fontselect,fontsizeselect,|,forecolor,backcolor,|,link,unlink,anchor",
+            theme_advanced_toolbar_location : "top",
+            theme_advanced_toolbar_align : "left",
+            theme_advanced_path_location : "bottom",
+            theme_advanced_resize_horizontal : 'true',
+            theme_advanced_resizing : 'true',
+            apply_source_formatting : 'true',
+            convert_urls : 'false',
+            force_br_newlines : 'true',
+            doctype : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
+        });
+    };
+</script>

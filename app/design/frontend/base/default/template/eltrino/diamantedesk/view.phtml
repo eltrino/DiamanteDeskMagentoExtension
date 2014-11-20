@@ -1,0 +1,89 @@
+<?php
+/**
+ * Copyright (c) 2014 Eltrino LLC (http://eltrino.com)
+ *
+ * Licensed under the Open Software License (OSL 3.0).
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eltrino.com so we can send you a copy immediately.
+ */
+?>
+<?php /* @var $this Eltrino_DiamanteDesk_Block_View */ ?>
+<?php $ticket = $this->getTicket(); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title">
+    <h1><?php echo $this->__('Ticket ') . $ticket->key ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<table>
+    <tr>
+        <td style="width: 125px"><b><?php echo $this->__('Subject'); ?>:</b></td>
+        <td><?php echo $ticket->subject; ?></td>
+    </tr>
+    <tr>
+        <td><b><?php echo $this->__('Created At'); ?>:</b></td>
+        <td><?php echo Mage::helper('core')->formatDate($ticket->created_at); ?></td>
+    </tr>
+    <tr>
+        <td><b><?php echo $this->__('Status'); ?>:</b></td>
+        <?php $statuses = Mage::getModel('eltrino_diamantedesk/source_tickets_statuses')->getStatuses()?>
+        <td><?php echo $statuses[$ticket->status]; ?></td>
+    </tr>
+    <tr>
+        <td><b><?php echo $this->__('Priority'); ?>:</b></td>
+        <?php $priorities = Mage::getModel('eltrino_diamantedesk/source_tickets_priorities')->getPriorities()?>
+        <td><?php echo $priorities[$ticket->priorit]; ?></td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top"><b><?php echo $this->__('Description'); ?>:</b></td>
+        <td><?php echo $ticket->description; ?></td>
+    </tr>
+</table>
+
+<?php if (isset($ticket->comments) && count($ticket->comments)): ?>
+    <div class="buttons-set"></div>
+    <h3><?php echo $this->__('Comments:') ?></h3>
+
+    <table class="data-table">
+    <?php foreach ($ticket->comments as $comment): ?>
+            <tr>
+                <td style="width:175px">
+                    <div><b><?php echo $this->__('Author') ?>:</b> <?php echo $comment->author->name;?></div>
+                    <div><b><?php echo $this->__('Created') ?>:</b> <?php echo Mage::helper('core')->formatDate($comment->created_at); ?></div>
+                </td>
+                <td style="vertical-align: top;"><?php echo $comment->content;?></td>
+            </tr>
+    <?php endforeach; ?>
+    </table>
+<?php endif; ?>
+<div class="buttons-set"></div>
+    <h3><?php echo $this->__('Add new comment') ?></h3>
+
+<form action="<?php echo $this->getCreateCommentUrl() ?>" method="post" id="diamante-ticket-create"
+      class="scaffold-form diamante-desk-form"
+      enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey') ?>
+    <label for="comment" class="required"><em>*</em><?php echo $this->__('Comment') ?></label>
+
+    <div class="input-box">
+        <textarea name="comment" id="comment" title="<?php echo $this->__('Comment') ?>"
+                  class="required-entry input-text required" cols="5" rows="3"></textarea>
+    </div>
+
+    <input type="hidden" name="ticket" value="<?php echo $ticket->id; ?>"/>
+    <input type="hidden" name="status" value="<?php echo $ticket->status; ?>"/>
+
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+
+    <div class="buttons-set">
+        <button type="submit" title="<?php echo $this->__('Add Comment') ?>" class="button"
+                style="margin-bottom: 15px;">
+            <span><span><?php echo $this->__('Add Comment') ?></span></span></button>
+    </div>
+</form>

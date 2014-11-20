@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <diamantedesk translate="title">
+            <title>DiamanteDesk</title>
+            <sort_order>85</sort_order>
+            <action>adminhtml/diamantedesk/tickets</action>
+        </diamantedesk>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <diamantedesk translate="title" module="eltrino_diamantedesk">
+                        <title>DiamanteDesk Tickets Grid</title>
+                    </diamantedesk>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <diamantedesk translate="title" module="eltrino_diamantedesk">
+                                        <title>DiamanteDesk Section</title>
+                                    </diamantedesk>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+                <children>
+                    <diamantedesk/>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

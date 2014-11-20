@@ -1,0 +1,78 @@
+<?php
+/**
+ * Copyright (c) 2014 Eltrino LLC (http://eltrino.com)
+ *
+ * Licensed under the Open Software License (OSL 3.0).
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eltrino.com so we can send you a copy immediately.
+ */
+?>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" class="scaffold-form"
+      enctype="multipart/form-data">
+
+    <table cellspacing="0" class="form-list">
+        <tbody>
+
+
+        <?php echo $this->getBlockHtml('formkey') ?>
+        <?php if ($branches = $this->getBranches()): ?>
+            <tr>
+                <td class="label">
+                    <label for="branch" class="required"><?php echo $this->__('Branch') ?> <span
+                            class="required">*</span></label>
+                </td>
+                <td class="value">
+                    <select name="branch" id="branch" class=" required-entry required-entry select">
+                        <?php foreach ($branches as $branch): ?>
+                            <option value="<?php echo $branch->id ?>"><?php echo $branch->name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+        <?php endif; ?>
+
+
+        <tr>
+            <td class="label"><label for="subject"><?php echo $this->__('Subject') ?></label></td>
+            <td class="value">
+                <input type="text" name="subject" id="subject" title="<?php echo $this->__('Subject') ?>"
+                       class="input-text required-entry"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label"><label for="description"><?php echo $this->__('Description') ?></label></td>
+            <td class="value">
+                <textarea name="description" id="description" title="<?php echo $this->__('Description') ?>"
+                          class="required-entry input-text" cols="5" rows="3" style="height:6em; width:99%;"></textarea>
+                <input type="hidden" name="order_id" id="order_id" value="<?php echo $this->getOrderIncrementId(); ?>">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label"></td>
+            <td class="value">
+
+                <div class="buttons-set f-right">
+                    <button type="submit" title="<?php echo $this->__('Send ticket') ?>" class="button">
+                        <span><span><?php echo $this->__('Send ticket') ?></span></span></button>
+                </div>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    //]]>
+</script>

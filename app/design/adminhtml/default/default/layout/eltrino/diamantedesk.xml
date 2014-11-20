@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addCss">
+                <name>eltrino/diamantedesk.css</name>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+    <adminhtml_customer_edit>
+        <reference name="customer_edit_tabs">
+            <action method="addTab">
+                <name>customer_edit_tab_tickets</name>
+                <block>eltrino_diamantedesk/adminhtml_customer_edit_tab_tickets</block>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+    <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <action method="addTab">
+                <name>order_edit_tab_tickets</name>
+                <block>eltrino_diamantedesk/adminhtml_sales_order_edit_tab_tickets</block>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+    <adminhtml_diamantedesk_tickets_index>
+        <referense name="head">
+            <action method="setTitle" translate="title"><title>Manage Tickets</title></action>
+        </referense>
+        <reference name="menu">
+            <action method="setActive"><menupath>diamantedesk</menupath></action>
+        </reference>
+        <reference name="content">
+            <block type="eltrino_diamantedesk/adminhtml_tickets_tickets" name="tickets_list">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_diamantedesk_tickets_index>
+</layout>

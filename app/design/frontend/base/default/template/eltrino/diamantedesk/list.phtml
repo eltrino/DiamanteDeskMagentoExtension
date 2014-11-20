@@ -1,0 +1,83 @@
+<?php
+/**
+ * Copyright (c) 2014 Eltrino LLC (http://eltrino.com)
+ *
+ * Licensed under the Open Software License (OSL 3.0).
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eltrino.com so we can send you a copy immediately.
+ */
+?>
+<?php /* @var $this Eltrino_DiamanteDesk_Block_List */ ?>
+<?php $_tickets = $this->getCustomerTickets(); ?>
+<div class="page-title">
+    <h1><?php echo $this->__('My Tickets') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php echo $this->getPagerHtml(); ?>
+<?php if (count($_tickets)): ?>
+    <table class="data-table linearize-table-large">
+        <col width="1"/>
+        <col/>
+        <col/>
+        <col/>
+        <col width="1"/>
+        <col width="1"/>
+        <thead>
+        <tr>
+            <th><?php echo $this->__('Key') ?></th>
+            <th><?php echo $this->__('Subject') ?></th>
+            <th><?php echo $this->__('Date') ?></th>
+            <th><?php echo $this->__('Priority') ?></th>
+            <th><?php echo $this->__('Status') ?></th>
+            <th><?php echo $this->__('Link') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php $_odd = ''; ?>
+        <?php foreach ($_tickets as $_ticket): ?>
+            <tr>
+                <td data-rwd-label="<?php echo $this->__('Key') ?>" style="white-space: nowrap;"><?php echo $_ticket->getKey() ?></td>
+                <td data-rwd-label="<?php echo $this->__('Subject') ?>">
+                    <span class="nobr"><?php echo $this->escapeHtml($_ticket->getSubject()) ?></span>
+                </td>
+                <td data-rwd-label="<?php echo $this->__('Date') ?>">
+                    <span class="nobr">
+                        <?php echo Mage::helper('core')->formatDate($_ticket->getData('createdAt'), $format = 'short', $showTime = false); ?>
+                    </span>
+                </td>
+                <td data-rwd-label="<?php echo $this->__('Priority') ?>">
+                    <?php echo $this->__($_ticket->getPriority()); ?>
+                </td>
+                <td data-rwd-label="<?php echo $this->__('Status') ?>">
+                    <span class="nobr">
+                        <?php echo $this->__($_ticket->getStatus()); ?>
+                    </span>
+                </td>
+
+                <td data-rwd-label="<?php echo $this->__('Link') ?>">
+                    <a href="<?php echo $this->getUrl('*/*/view', array('key' => $_ticket->getKey())) ?>"><?php echo $this->__('View') ?></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p><?php echo $this->__('You have no tickets yet.'); ?></p>
+<?php endif; ?>
+<?php echo $this->getPagerHtml(); ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>">
+            <small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+
+    <a title="Add Ticket" class="button" href="<?php echo $this->getUrl('*/*/createTicket') ?>">
+        <span>
+            <span><?php echo $this->__('Create Ticket') ?></span>
+        </span>
+    </a>
+</div>

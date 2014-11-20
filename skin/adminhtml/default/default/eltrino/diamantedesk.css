@@ -1,0 +1,9 @@
+.hidden_row {
+    display: none;
+}
+
+.diamante-desk-api-indicator {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}

@@ -1,0 +1,49 @@
+{
+    "name": "eltrino/diamantedesk-magento-extension",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "https://github.com/eltrino/DiamanteDeskMagentoExtension.git",
+    "description": "DiamanteDesk Magento Extension",
+    "authors": [
+        {
+            "name": "Eltrino LLC",
+            "email": "license@eltrino.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "map": [
+            [
+                "app/code/community/Eltrino/DiamanteDesk",
+                "app/code/community/Eltrino/DiamanteDesk"
+            ],
+            [
+                "app/etc/modules/Eltrino_DiamanteDesk.xml",
+                "app/etc/modules/Eltrino_DiamanteDesk.xml"
+            ],
+            [
+                "app/design/adminhtml/default/default/layout/eltrino/diamantedesk.xml",
+                "app/design/adminhtml/default/default/layout/eltrino/diamantedesk.xml"
+            ],
+            [
+                "skin/adminhtml/default/default/eltrino/diamantedesk.css",
+                "skin/adminhtml/default/default/eltrino/diamantedesk.css"
+            ],
+            [
+                "app/design/adminhtml/default/default/template/eltrino/diamantedesk",
+                "app/design/adminhtml/default/default/template/eltrino/diamantedesk"
+            ],
+            [
+                "app/design/frontend/base/default/layout/eltrino/diamantedesk.xml",
+                "app/design/frontend/base/default/layout/eltrino/diamantedesk.xml"
+            ],
+            [
+                "app/design/frontend/base/default/template/eltrino/diamantedesk",
+                "app/design/frontend/base/default/template/eltrino/diamantedesk"
+            ]
+        ]
+    }
+}

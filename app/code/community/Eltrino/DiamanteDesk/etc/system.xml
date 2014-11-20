@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <eltrino>
+            <label>Eltrino</label>
+            <sort_order>250</sort_order>
+        </eltrino>
+    </tabs>
+    <sections>
+        <diamantedesk translate="label" module="eltrino_diamantedesk">
+            <label>DiamanteDesk</label>
+            <tab>eltrino</tab>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <sort_order>250</sort_order>
+            <groups>
+                <api translate="label">
+                    <label>Api Credentials</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <username translate="label">
+                            <label>User Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </username>
+                        <key translate="label">
+                            <label>Api Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </key>
+                        <server_address translate="label">
+                            <label>Server Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </server_address>
+                        <test_connection translate="label">
+                            <frontend_model>eltrino_diamantedesk/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </test_connection>
+                    </fields>
+                </api>
+                <branch_configuration>
+                    <label>Branch Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>eltrino_diamantedesk/adminhtml_system_config_fieldset_hidden</frontend_model>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <branch translate="label">
+                            <label>Branch</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eltrino_diamantedesk/source_branch</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </branch>
+                    </fields>
+                </branch_configuration>
+                <configuration translate="label">
+                    <label>Other Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <display_footer_link translate="label">
+                            <label>Display footer link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </display_footer_link>
+                        <footer_link_url translate="label">
+                            <label>Footer link url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </footer_link_url>
+                    </fields>
+                </configuration>
+            </groups>
+        </diamantedesk>
+    </sections>
+</config>

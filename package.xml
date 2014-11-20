@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<package>
+    <name>DiamanteDesk</name>
+    <version>1.0.0</version>
+    <stability>devel</stability>
+    <license uri="http://opensource.org/licenses/OSL-3.0">OSL-3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Diamantedesk magento integration</summary>
+    <description>Diamantedesk magento integration</description>
+    <notes>Not stable version for tests</notes>
+    <authors>
+        <author>
+            <name>Eltrino LLC</name>
+            <user>NorthDakota</user>
+            <email>vladimir.polischuk@eltrino.com</email>
+        </author>
+    </authors>
+    <date>2015-06-22</date>
+    <time>11:36:00</time>
+    <contents>
+        <target name="magecommunity">
+            <dir name="Eltrino">
+                <dir name="DiamanteDesk">
+                    <dir name="Block">
+                        <dir name="Adminhtml">
+                            <dir name="Customer">
+                                <dir name="Edit">
+                                    <dir name="Tab">
+                                        <file name="Tickets.php" hash="8a3a68bc254d337109e54e7ba0382164"/>
+                                    </dir>
+                                </dir>
+                            </dir>
+                            <dir name="Sales">
+                                <dir name="Order">
+                                    <dir name="View">
+                                        <file name="Form.php" hash="54606a1d9fa329b26a525a2e5ab2865a"/>
+                                        <file name="Info.php" hash="985fab0676eb380742fddac096836959"/>
+                                    </dir>
+                                </dir>
+                            </dir>
+                            <dir name="System">
+                                <dir name="Config">
+                                    <dir name="Fieldset">
+                                        <file name="Hidden.php" hash="db7676a154e24a65385a3509a48e01e9"/>
+                                    </dir>
+                                    <dir name="Form">
+                                        <file name="Button.php" hash="383f33e1bdccc045a0b5d3ccc66bcd8b"/>
+                                    </dir>
+                                </dir>
+                            </dir>
+                            <dir name="Tickets">
+                                <dir name="Edit">
+                                    <file name="Form.php" hash="e3c0cad7d1db3a46b79a40c0499f4f1b"/>
+                                </dir>
+                                <file name="Edit.php" hash="bc8fcdf9b2877c0672eb581f85837573"/>
+                                <dir name="Grid">
+                                    <dir name="Renderer">
+                                        <file name="Email.php" hash="b8d636e05bb3071f5929020580bb920f"/>
+                                        <file name="Link.php" hash="85d1940f6ae20f139f764f39f6f74077"/>
+                                    </dir>
+                                </dir>
+                                <file name="Grid.php" hash="1a202cb623b0d677e62601bf5d93fecd"/>
+                                <file name="Tickets.php" hash="a51ab28cbc6687c52ab39d0a41e53859"/>
+                            </dir>
+                            <file name="Tickets.php" hash="5f025ff9b443f7688feaf2dbc0f34cc7"/>
+                        </dir>
+                        <file name="Form.php" hash="1049bcbe15768176c76eab4f845204dc"/>
+                        <file name="List.php" hash="199404875ef70f8b2f44eb3fbb3f9e58"/>
+                        <dir name="Widget">
+                            <file name="Contact.php" hash="c9e7993d890baf150eb81df2a25efb20"/>
+                        </dir>
+                    </dir>
+                    <dir name="Helper">
+                        <file name="Data.php" hash="a999e9b390a0748c3baf7731e564db59"/>
+                    </dir>
+                    <dir name="Model">
+                        <file name="Api.php" hash="89a5fb759a3cc221d8ebf7bc7a90fb33"/>
+                        <file name="OrderRelation.php" hash="c3314bb2b03395a71300de44cc310828"/>
+                        <file name="Queue.php" hash="0be3f50adcbeb9cff3f7c527938d8621"/>
+                        <dir name="Resource">
+                            <dir name="OrderRelation">
+                                <file name="Collection.php" hash="9ff046f4af8611a3fe90735ce34daf70"/>
+                            </dir>
+                            <file name="OrderRelation.php" hash="2f1271e35fed922fe3291723540f6ce4"/>
+                            <dir name="Queue">
+                                <file name="Collection.php" hash="8ad703cf77f2c886b0061f10fc8368ef"/>
+                            </dir>
+                            <file name="Queue.php" hash="a2f8d24c281f426c99a63e6b3516094c"/>
+                            <dir name="Ticket">
+                                <file name="Collection.php" hash="94736c2e69f9249786d54c957fa52ce4"/>
+                            </dir>
+                            <file name="Ticket.php" hash="e0e6ec660456cec338cb67b9c110df85"/>
+                        </dir>
+                        <dir name="Source">
+                            <file name="Branch.php" hash="6cab33c5144c4b9d9064fe9b2c3c00db"/>
+                            <dir name="Tickets">
+                                <file name="Priorities.php" hash="a904e715c49c7efe8d528c845f2f9624"/>
+                                <file name="Sources.php" hash="a14fcca214ffb79403b9a504f673c9fb"/>
+                                <file name="Statuses.php" hash="03e53f6d28843f81c12fecc595b68c54"/>
+                            </dir>
+                            <file name="Users.php" hash="c97ab0df8971021920069a5579d3c4c1"/>
+                        </dir>
+                        <file name="Ticket.php" hash="7cf7edbbe637d78e64794a19726be4e6"/>
+                    </dir>
+                    <dir name="controllers">
+                        <dir name="Adminhtml">
+                            <file name="CustomerController.php" hash="0d309681c6b376f21f23d81418447697"/>
+                            <file name="DiamantedeskController.php" hash="8742573b214c2eb14e02d560dd920811"/>
+                        </dir>
+                        <file name="CustomerController.php" hash="f86527ac3fa30fdfaf3552d2ecf4f2ed"/>
+                    </dir>
+                    <dir name="etc">
+                        <file name="adminhtml.xml" hash="9580d632deb7592a938ceb82252519f3"/>
+                        <file name="config.xml" hash="fe533dd43be421fcdc6b64deca83849b"/>
+                        <file name="system.xml" hash="ec65b44e9905599a8f32cde1503873e0"/>
+                        <file name="widget.xml" hash="ef7c41537a154db36fa0cecc263773fc"/>
+                    </dir>
+                    <dir name="sql">
+                        <dir name="eltrino_diamantedesk_setup">
+                            <file name="install-1.0.0.php" hash="6b7388f8e050abaa37f43e8a7d253515"/>
+                            <file name="upgrade-1.0.0-1.0.1.php" hash="33938a9c336acdc7e9d05c8caa3d17f7"/>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+        <target name="magedesign">
+            <dir name="adminhtml">
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="layout">
+                            <dir name="eltrino">
+                                <file name="diamantedesk.xml" hash="946e8415d1958fdf17e2cfe2a66e095f"/>
+                            </dir>
+                        </dir>
+                        <dir name="template">
+                            <dir name="eltrino">
+                                <dir name="diamantedesk">
+                                    <file name="simpleForm.phtml" hash="85ba2f1e15837aeff02d2ecb5f7d9ec8"/>
+                                    <dir name="sytem">
+                                        <dir name="config">
+                                            <file name="button.phtml" hash="f82927a83317965aa781f8765fbdf82f"/>
+                                        </dir>
+                                    </dir>
+                                    <file name="tickets.phtml" hash="7f7dab7586369c1fe70730a67eeb3477"/>
+                                    <file name="ticketsGrid.phtml" hash="2585d9d516884c0eaf6720302b65250d"/>
+                                </dir>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+            <dir name="frontend">
+                <dir name="base">
+                    <dir name="default">
+                        <dir name="layout">
+                            <dir name="eltrino">
+                                <file name="diamantedesk.xml" hash="9e93689c98c385d67d30e1291f19488d"/>
+                            </dir>
+                        </dir>
+                        <dir name="template">
+                            <dir name="eltrino">
+                                <dir name="diamantedesk">
+                                    <file name="createTicket.phtml" hash="d5384e722db8b608f7fa16e2e2d2d34d"/>
+                                    <file name="list.phtml" hash="ab1a84d64e001a6e191ad8484373150b"/>
+                                </dir>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+        <target name="mageetc">
+            <dir name="modules">
+                <file name="Eltrino_DiamanteDesk.xml" hash="a3fa745847f553b5c0192115a07781ba"/>
+            </dir>
+        </target>
+        <target name="mageskin">
+            <dir name="adminhtml">
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="eltrino">
+                            <file name="diamantedesk.css" hash="442e6798a1462e7ac2f12041ef3b3d2f"/>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+    </contents>
+    <compatible/>
+    <dependencies>
+        <required>
+            <php>
+                <min>5.3.0</min>
+                <max>5.6.0</max>
+            </php>
+        </required>
+    </dependencies>
+</package>

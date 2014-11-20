@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" ifconfig="diamantedesk/configuration/display_footer_link">
+                <label>Customer Support</label>
+                <url helper="eltrino_diamantedesk/getSupportLink"/>
+                <title>Customer Support</title>
+            </action>
+        </reference>
+    </default>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label">
+                <name>diamantedesk.tickets</name>
+                <path>diamantedesk/customer/index</path>
+                <label>My Tickets</label>
+            </action>
+        </reference>
+    </customer_account>
+    <diamantedesk_customer_index translate="label">
+        <update handle="customer_account"/>
+        <label>My tickets</label>
+        <reference name="head">
+            <action method="setTitle">
+                <title>My Tickets</title>
+            </action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="eltrino_diamantedesk/list" name="diamantdesk.tickets"
+                   template="eltrino/diamantedesk/list.phtml"/>
+        </reference>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="eltrino_diamantedesk">
+                <title>My Tickets</title>
+            </action>
+        </reference>
+    </diamantedesk_customer_index>
+    <diamantedesk_customer_createticket>
+        <update handle="customer_account"/>
+        <label>Create Ticket</label>
+        <reference name="head">
+            <action method="setTitle">
+                <title>Create Ticket</title>
+            </action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="eltrino_diamantedesk/form" name="diamantdesk.createTicket"
+                   template="eltrino/diamantedesk/createTicket.phtml"/>
+        </reference>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="eltrino_diamantedesk">
+                <title>Create Ticket</title>
+            </action>
+        </reference>
+    </diamantedesk_customer_createticket>
+    <diamantedesk_customer_view translate="label">
+        <update handle="customer_account"/>
+        <label>View Ticket</label>
+        <reference name="my.account.wrapper">
+            <block type="eltrino_diamantedesk/view" name="diamantdesk.viewTicket"
+                   template="eltrino/diamantedesk/view.phtml"/>
+        </reference>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="eltrino_diamantedesk">
+                <title>View Ticket</title>
+            </action>
+        </reference>
+    </diamantedesk_customer_view>
+    <!--<sales_order_view>-->
+        <!--<reference name="my.account.wrapper">-->
+            <!--<block type="eltrino_diamantedesk/form" name="diamantdesk.createTicket"-->
+                   <!--template="eltrino/diamantedesk/createTicket.phtml" before="sales.order.view">-->
+                <!--<action method="setShowBackLink">-->
+                    <!--<value>0</value>-->
+                <!--</action>-->
+            <!--</block>-->
+        <!--</reference>-->
+    <!--</sales_order_view>-->
+</layout>
